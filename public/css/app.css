@@ -1,8 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
 :root {
   color-scheme: light;
+  --ml-indigo: #4f46e5;
 }
 
-.toast-enter,
+html,
+body {
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+}
+
+body {
+  background:
+    radial-gradient(1200px 600px at 100% -10%, rgba(79, 70, 229, 0.08), transparent 50%),
+    radial-gradient(900px 500px at -10% 110%, rgba(14, 165, 233, 0.06), transparent 45%),
+    #f8fafc;
+}
+
 .toast-enter {
   animation: toast-in 0.2s ease-out;
 }
@@ -39,4 +53,41 @@
   #sidebar-overlay.open {
     display: none;
   }
+}
+
+.auth-panel,
+.auth-panel {
+  background-image:
+    linear-gradient(180deg, rgba(15, 23, 42, 0.28) 0%, rgba(49, 46, 129, 0.72) 55%, rgba(30, 27, 75, 0.92) 100%),
+    url('/images/auth-hero.png');
+  background-size: cover;
+  background-position: center;
+}
+
+.hero-banner,
+.hero-banner {
+  background-image:
+    linear-gradient(100deg, rgba(15, 23, 42, 0.78) 0%, rgba(49, 46, 129, 0.55) 48%, rgba(15, 23, 42, 0.2) 100%),
+    url('/images/dashboard-hero.png');
+  background-size: cover;
+  background-position: center;
+}
+
+.pay-card-art,
+.pay-card-art {
+  background-image:
+    linear-gradient(180deg, rgba(15, 23, 42, 0.05), rgba(15, 23, 42, 0.55)),
+    url('/images/payment-card.png');
+  background-size: cover;
+  background-position: center;
+}
+
+.toast-enter,
+.toast-enter {
+  animation: toast-in 0.2s ease-out;
+}
+
+.step-line {
+  background: linear-gradient(90deg, #4f46e5 0%, #c7d2fe 100%);
+  height: 2px;
 }
