@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Loans · MicroLend</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="/css/app.css" />
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased">
+  <div id="app">
+    <div id="page-content">
+      <h1 class="text-2xl font-semibold tracking-tight text-slate-900">Loans</h1>
+      <p class="mt-1 text-sm text-slate-500">Every disbursement attempt on this account.</p>
+      <div class="mt-8 overflow-hidden rounded-lg bg-white shadow-sm">
+        <div class="overflow-x-auto">
+          <table class="min-w-full divide-y divide-slate-100 text-left">
+            <thead class="bg-slate-50/80">
+              <tr class="text-xs font-medium uppercase tracking-wide text-slate-500">
+                <th class="px-4 py-3">ID</th>
+                <th class="px-4 py-3">Amount</th>
+                <th class="px-4 py-3">Status</th>
+                <th class="px-4 py-3">Due</th>
+                <th class="px-4 py-3"></th>
+              </tr>
+            </thead>
+            <tbody id="loans-body" class="divide-y divide-slate-100"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="/js/config.js"></script>
+  <script src="/js/api.js"></script>
+  <script src="/js/ui.js"></script>
+  <script src="/js/loans.js"></script>
+</body>
+</html>

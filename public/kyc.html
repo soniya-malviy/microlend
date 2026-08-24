@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>KYC · MicroLend</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="/css/app.css" />
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased">
+  <div id="app">
+    <div id="page-content">
+      <h1 class="text-2xl font-semibold tracking-tight text-slate-900">Identity verification</h1>
+      <p class="mt-1 text-sm text-slate-500">Submit a government ID. Numbers ending in 0 are rejected in this mock.</p>
+      <div id="kyc-badge" class="mt-4"></div>
+      <form id="kyc-form" class="mt-8 max-w-lg space-y-4 rounded-lg bg-white p-6 shadow-sm">
+        <div>
+          <label class="text-sm font-medium text-slate-700" for="id_type">ID type</label>
+          <select id="id_type" name="id_type" required
+            class="mt-1.5 block w-full rounded-lg border-0 px-3 py-2.5 text-sm shadow-sm ring-1 ring-inset ring-slate-200 focus:ring-2 focus:ring-indigo-500">
+            <option value="">Select</option>
+            <option value="aadhaar">Aadhaar</option>
+            <option value="pan">PAN</option>
+          </select>
+        </div>
+        <div>
+          <label class="text-sm font-medium text-slate-700" for="id_number">ID number</label>
+          <input id="id_number" name="id_number" required
+            class="mt-1.5 block w-full rounded-lg border-0 px-3 py-2.5 text-sm shadow-sm ring-1 ring-inset ring-slate-200 focus:ring-2 focus:ring-indigo-500" />
+        </div>
+        <div>
+          <label class="text-sm font-medium text-slate-700" for="full_name">Full name (as on ID)</label>
+          <input id="full_name" name="full_name" required
+            class="mt-1.5 block w-full rounded-lg border-0 px-3 py-2.5 text-sm shadow-sm ring-1 ring-inset ring-slate-200 focus:ring-2 focus:ring-indigo-500" />
+        </div>
+        <button id="submit-btn" type="submit"
+          class="inline-flex items-center justify-center rounded-lg bg-indigo-600 px-4 py-2.5 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 disabled:opacity-60">
+          Verify
+        </button>
+      </form>
+    </div>
+  </div>
+  <script src="/js/config.js"></script>
+  <script src="/js/api.js"></script>
+  <script src="/js/ui.js"></script>
+  <script src="/js/kyc.js"></script>
+</body>
+</html>
