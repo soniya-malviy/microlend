@@ -115,7 +115,6 @@ ngrok http 3000
 
 ## Live Demo
 
-- Frontend: `<your-netlify-url>`
-- API: `<your-render-url>`
+https://microlend-jmi9.onrender.com/
 
 *(Note: the free-tier backend may take ~30-50 seconds to wake up on first request.)*
