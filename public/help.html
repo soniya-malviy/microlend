@@ -11,47 +11,19 @@
 <body class="text-slate-800 antialiased">
   <div id="app">
     <div id="page-content">
-      <p class="text-xs font-semibold uppercase tracking-[0.16em] text-indigo-600">Help</p>
-      <h1 class="mt-1 text-2xl font-semibold tracking-tight text-slate-900">How to use MicroLend</h1>
-      <p class="mt-1 max-w-2xl text-sm text-slate-500">Swipe through the flow, then open the matching screen. KYC unlocks scoring, scoring unlocks a loan, Razorpay disburses it.</p>
-
-      <div class="help-carousel mt-8" id="help-carousel" aria-roledescription="carousel">
+      <div class="help-carousel" id="help-carousel" aria-roledescription="carousel">
         <div class="help-track" id="help-track">
           <article class="help-slide">
             <img src="/images/help-kyc.png" alt="Identity verification on a laptop with an Aadhaar card" />
-            <div class="help-slide-scrim"></div>
-            <div class="absolute inset-x-0 bottom-0 p-6 md:p-8">
-              <p class="text-[11px] font-semibold uppercase tracking-[0.16em] text-indigo-200">Step 1</p>
-              <h2 class="mt-1 text-2xl font-semibold tracking-tight text-white md:text-3xl">Verify KYC</h2>
-              <p class="mt-2 max-w-lg text-sm leading-6 text-slate-200">Submit Aadhaar or PAN. Format is checked — 12-digit checksum or PAN like ABCPE1234F.</p>
-            </div>
           </article>
           <article class="help-slide">
             <img src="/images/help-score.png" alt="Credit score dashboard with a circular gauge" />
-            <div class="help-slide-scrim"></div>
-            <div class="absolute inset-x-0 bottom-0 p-6 md:p-8">
-              <p class="text-[11px] font-semibold uppercase tracking-[0.16em] text-indigo-200">Step 2</p>
-              <h2 class="mt-1 text-2xl font-semibold tracking-tight text-white md:text-3xl">Generate a credit score</h2>
-              <p class="mt-2 max-w-lg text-sm leading-6 text-slate-200">Enter income, debt, and employment. You get a score and an approved INR limit.</p>
-            </div>
           </article>
           <article class="help-slide">
             <img src="/images/help-loan.png" alt="Request loan screen on a monitor" />
-            <div class="help-slide-scrim"></div>
-            <div class="absolute inset-x-0 bottom-0 p-6 md:p-8">
-              <p class="text-[11px] font-semibold uppercase tracking-[0.16em] text-indigo-200">Step 3</p>
-              <h2 class="mt-1 text-2xl font-semibold tracking-tight text-white md:text-3xl">Request a loan</h2>
-              <p class="mt-2 max-w-lg text-sm leading-6 text-slate-200">On the dashboard, request an amount within your limit. A Razorpay order is created.</p>
-            </div>
           </article>
           <article class="help-slide">
             <img src="/images/help-pay.png" alt="Paying a loan with UPI checkout on a phone" />
-            <div class="help-slide-scrim"></div>
-            <div class="absolute inset-x-0 bottom-0 p-6 md:p-8">
-              <p class="text-[11px] font-semibold uppercase tracking-[0.16em] text-indigo-200">Step 4</p>
-              <h2 class="mt-1 text-2xl font-semibold tracking-tight text-white md:text-3xl">Pay to disburse</h2>
-              <p class="mt-2 max-w-lg text-sm leading-6 text-slate-200">Open the loan and complete test checkout. Capture updates status to disbursed.</p>
-            </div>
           </article>
         </div>
         <button type="button" class="help-nav-btn left-3" id="help-prev" aria-label="Previous step">
@@ -60,12 +32,57 @@
         <button type="button" class="help-nav-btn right-3" id="help-next" aria-label="Next step">
           <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
         </button>
-        <div class="help-dots absolute bottom-4 right-6 z-10 flex items-center gap-1.5" id="help-dots"></div>
+        <div class="help-dots absolute bottom-4 left-1/2 z-10 flex -translate-x-1/2 items-center gap-1.5 rounded-full bg-slate-900/45 px-2.5 py-1.5" id="help-dots"></div>
       </div>
 
-      <div class="mt-6 grid gap-4 md:grid-cols-4" id="help-thumbs"></div>
-
-      <div class="mt-8 rounded-2xl bg-white p-6 shadow-sm ring-1 ring-slate-100" id="help-detail"></div>
+      <div class="help-steps mt-5 ring-1 ring-slate-100" id="help-steps">
+        <div class="help-steps-track" id="help-steps-track">
+          <article class="help-step">
+            <div class="flex items-start gap-4">
+              <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-indigo-600 text-sm font-semibold text-white">1</span>
+              <div class="min-w-0 flex-1">
+                <h2 class="text-base font-semibold text-slate-900">Verify KYC</h2>
+                <p class="mt-1 text-sm leading-6 text-slate-600">Open <strong>KYC</strong> and submit Aadhaar or PAN with the name on the ID. This demo cannot call UIDAI or NSDL, so we only check format: 12-digit Aadhaar (checksum) or a 10-character PAN whose 4th letter is P.</p>
+                <p class="mt-2 text-xs text-slate-500">Try Aadhaar <span class="font-mono">2345 6789 0124</span> or PAN <span class="font-mono">ABCPE1234F</span>.</p>
+                <a href="/kyc.html" class="mt-4 inline-flex rounded-xl bg-indigo-600 px-4 py-2 text-sm font-semibold text-white hover:bg-indigo-700">Go to KYC</a>
+              </div>
+            </div>
+          </article>
+          <article class="help-step">
+            <div class="flex items-start gap-4">
+              <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-indigo-600 text-sm font-semibold text-white">2</span>
+              <div class="min-w-0 flex-1">
+                <h2 class="text-base font-semibold text-slate-900">Generate a credit score</h2>
+                <p class="mt-1 text-sm leading-6 text-slate-600">After KYC is verified, open <strong>Credit score</strong>. Enter monthly income, existing debt, and employment type. The engine returns a score and an approved INR limit.</p>
+                <p class="mt-2 text-xs text-slate-500">Scoring stays locked until KYC is verified.</p>
+                <a href="/credit-score.html" class="mt-4 inline-flex rounded-xl bg-indigo-600 px-4 py-2 text-sm font-semibold text-white hover:bg-indigo-700">Go to credit score</a>
+              </div>
+            </div>
+          </article>
+          <article class="help-step">
+            <div class="flex items-start gap-4">
+              <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-indigo-600 text-sm font-semibold text-white">3</span>
+              <div class="min-w-0 flex-1">
+                <h2 class="text-base font-semibold text-slate-900">Request a loan</h2>
+                <p class="mt-1 text-sm leading-6 text-slate-600">On the <strong>Dashboard</strong>, tap Request disbursement. Enter an amount up to your approved limit. That creates a Razorpay order; the loan stays pending until payment is captured.</p>
+                <p class="mt-2 text-xs text-slate-500">The request button stays disabled until you have a limit.</p>
+                <a href="/dashboard.html" class="mt-4 inline-flex rounded-xl bg-indigo-600 px-4 py-2 text-sm font-semibold text-white hover:bg-indigo-700">Go to dashboard</a>
+              </div>
+            </div>
+          </article>
+          <article class="help-step">
+            <div class="flex items-start gap-4">
+              <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-indigo-600 text-sm font-semibold text-white">4</span>
+              <div class="min-w-0 flex-1">
+                <h2 class="text-base font-semibold text-slate-900">Pay to disburse</h2>
+                <p class="mt-1 text-sm leading-6 text-slate-600">Open the loan from <strong>Loans</strong> and tap Pay securely. Complete Razorpay test checkout with UPI, card, or netbanking. When the webhook confirms capture, status moves to disbursed.</p>
+                <p class="mt-2 text-xs text-slate-500">Razorpay test card: <span class="font-mono">4111 1111 1111 1111</span>, any future expiry, any CVV.</p>
+                <a href="/loans.html" class="mt-4 inline-flex rounded-xl bg-indigo-600 px-4 py-2 text-sm font-semibold text-white hover:bg-indigo-700">Go to loans</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
     </div>
   </div>
   <script src="/js/config.js"></script>

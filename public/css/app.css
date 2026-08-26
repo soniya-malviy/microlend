@@ -158,25 +158,15 @@ body {
 .help-slide {
   position: relative;
   min-width: 100%;
+  background: #0f172a;
 }
 
 .help-slide img {
   display: block;
-  height: 20rem;
   width: 100%;
+  height: min(58vh, 27.5rem);
   object-fit: cover;
-}
-
-@media (min-width: 768px) {
-  .help-slide img {
-    height: 26rem;
-  }
-}
-
-.help-slide-scrim {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(15, 23, 42, 0.05) 20%, rgba(15, 23, 42, 0.82) 100%);
+  object-position: top center;
 }
 
 .help-nav-btn {
@@ -211,4 +201,21 @@ body {
 .help-dots button.is-active {
   width: 1.4rem;
   background: #fff;
+}
+
+.help-steps {
+  overflow: hidden;
+  border-radius: 1.25rem;
+  background: #fff;
+  box-shadow: 0 8px 30px rgba(15, 23, 42, 0.06);
+}
+
+.help-steps-track {
+  display: flex;
+  transition: transform 480ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.help-step {
+  min-width: 100%;
+  padding: 1.15rem 1.5rem;
 }
