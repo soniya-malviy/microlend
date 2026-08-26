@@ -51,6 +51,7 @@ Express API  ------>  PostgreSQL (users, loans, transactions, webhook_logs)
 |---|---|---|
 | POST | `/auth/signup` | Create a new user account |
 | POST | `/auth/login` | Authenticate and receive a JWT |
+| POST | `/auth/demo` | Recruiter sandbox login (resets demo account to empty) |
 | POST | `/kyc/verify` | Submit ID details for identity verification |
 | POST | `/credit/score` | Get a credit score and approved loan limit |
 | POST | `/loans/disburse` | Request a loan and create a Razorpay order |
@@ -110,6 +111,12 @@ ngrok http 3000
 - Replace node-cron with a proper job queue (BullMQ) for retry-safe reminders
 - Rate limiting and request logging middleware
 - Real SMS reminders via Twilio instead of console-logged mocks
+
+---
+
+## Recruiter demo
+
+On the sign-in page, click **Click here for a demo** — no email or password needed. Each demo session wipes KYC, credit score, and loans so the dashboard starts empty.
 
 ---
 

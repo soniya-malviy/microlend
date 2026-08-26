@@ -83,7 +83,7 @@ function openCheckout(loan) {
     currency: 'INR',
     name: 'MicroLend',
     description: 'Loan disbursement · INR',
-    image: '/images/payment-card.png',
+    image: '/images/logo-mark.png',
     order_id: loan.order_id || loan.razorpay_order_id,
     prefill: {
       name: user.name || '',

@@ -140,6 +140,15 @@ function paymentRailHtml() {
   `;
 }
 
+function brandLogoHtml({ href = '/dashboard.html', size = 'nav', onDark = false } = {}) {
+  const sizeCls = size === 'lg' ? ' brand-lg' : '';
+  const darkCls = onDark ? ' brand-on-dark' : '';
+  return `<a href="${href}" class="brand${sizeCls}${darkCls}" aria-label="MicroLend">
+    <img src="/images/logo.svg" alt="" class="brand-mark" />
+    <span class="brand-word">Micro<span>Lend</span></span>
+  </a>`;
+}
+
 function renderAppShell(active) {
   const shell = document.getElementById('app');
   const page = document.getElementById('page-content');
@@ -156,12 +165,8 @@ function renderAppShell(active) {
     <div class="min-h-screen">
       <div id="sidebar-overlay" class="fixed inset-0 z-30 bg-slate-900/40 md:hidden"></div>
       <aside id="sidebar" class="fixed inset-y-0 left-0 z-40 flex w-64 flex-col border-r border-slate-200/70 bg-white/90 shadow-sm backdrop-blur transition-transform duration-200 md:translate-x-0">
-        <div class="flex h-16 items-center gap-2.5 px-5">
-          <span class="flex h-8 w-8 items-center justify-center rounded-xl bg-indigo-600 text-sm font-semibold text-white shadow-sm">M</span>
-          <div>
-            <p class="text-sm font-semibold tracking-tight text-slate-900">MicroLend</p>
-            <p class="text-[10px] font-medium uppercase tracking-[0.14em] text-slate-400">Lending OS</p>
-          </div>
+        <div class="flex h-16 items-center px-5">
+          ${brandLogoHtml({ href: '/dashboard.html' })}
         </div>
         <nav class="flex-1 space-y-1 px-3 py-4">
           ${navItem('/dashboard.html', 'Dashboard', 'dashboard', active, 'home')}
@@ -181,9 +186,12 @@ function renderAppShell(active) {
       </aside>
       <div class="md:pl-64">
         <header class="sticky top-0 z-20 flex h-16 items-center justify-between border-b border-slate-200/70 bg-white/80 px-4 backdrop-blur md:px-8">
-          <button id="menu-btn" type="button" class="rounded-xl p-2 text-slate-600 hover:bg-slate-50 md:hidden" aria-label="Open menu">
-            <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4 6h16M4 12h16M4 18h16"/></svg>
-          </button>
+          <div class="flex items-center gap-2">
+            <button id="menu-btn" type="button" class="rounded-xl p-2 text-slate-600 hover:bg-slate-50 md:hidden" aria-label="Open menu">
+              <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4 6h16M4 12h16M4 18h16"/></svg>
+            </button>
+            <span class="md:hidden">${brandLogoHtml({ href: '/dashboard.html' })}</span>
+          </div>
           <p class="hidden text-sm font-medium text-slate-500 sm:block">Secure rupee disbursements</p>
           <div class="ml-auto flex items-center gap-3">
             <span class="hidden rounded-full bg-emerald-50 px-2.5 py-1 text-[11px] font-medium text-emerald-700 ring-1 ring-emerald-100 sm:inline">Test mode</span>

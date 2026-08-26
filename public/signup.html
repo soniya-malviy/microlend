@@ -5,15 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Create account · MicroLend</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="icon" href="/images/logo.svg" type="image/svg+xml" />
   <link rel="stylesheet" href="/css/app.css" />
 </head>
 <body class="min-h-screen text-slate-800 antialiased">
   <div class="grid min-h-screen lg:grid-cols-2">
     <section class="auth-panel relative hidden overflow-hidden lg:flex lg:flex-col lg:justify-between lg:p-12">
-      <div class="flex items-center gap-2">
-        <span class="flex h-9 w-9 items-center justify-center rounded-xl bg-white/15 text-sm font-semibold text-white ring-1 ring-white/20">M</span>
-        <p class="text-lg font-semibold tracking-tight text-white">MicroLend</p>
-      </div>
+      <a href="/" class="brand brand-lg brand-on-dark" aria-label="MicroLend">
+        <img src="/images/logo.svg" alt="" class="brand-mark" />
+        <span class="brand-word">Micro<span>Lend</span></span>
+      </a>
       <div>
         <p class="text-xs font-semibold uppercase tracking-[0.2em] text-indigo-200">Onboard in minutes</p>
         <h1 class="mt-3 max-w-md text-4xl font-semibold leading-tight tracking-tight text-white">Identity first. Credit second. Money last.</h1>
@@ -23,6 +24,12 @@
     </section>
     <div class="flex items-center justify-center px-4 py-12">
       <div class="w-full max-w-md">
+        <div class="mb-8 lg:hidden">
+          <a href="/" class="brand brand-lg" aria-label="MicroLend">
+            <img src="/images/logo.svg" alt="" class="brand-mark" />
+            <span class="brand-word">Micro<span>Lend</span></span>
+          </a>
+        </div>
         <h2 class="text-2xl font-semibold tracking-tight text-slate-900">Create account</h2>
         <p class="mt-1 text-sm text-slate-500">All fields are required.</p>
         <form id="signup-form" class="mt-8 space-y-4" novalidate>

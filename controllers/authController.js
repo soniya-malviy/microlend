@@ -4,6 +4,10 @@ const User = require('../models/User');
 
 const SALT_ROUNDS = 12;
 const JWT_EXPIRES_IN = '7d';
+const DEMO_EMAIL = 'recruiter@microlend.demo';
+const DEMO_PASSWORD = 'Demo@12345';
+const DEMO_NAME = 'Recruiter Demo';
+const DEMO_PHONE = '9999999999';
 
 function signToken(user) {
   return jwt.sign(
@@ -84,13 +88,18 @@ async function login(req, res) {
       return res.status(401).json({ error: 'Invalid email or password' });
     }
 
-    const token = signToken(user);
+    let sessionUser = user;
+    if (user.email === DEMO_EMAIL) {
+      sessionUser = await provisionDemoUser();
+    }
+
+    const token = signToken(sessionUser);
 
     return res.json({
       message: 'Login successful',
       token,
       expiresIn: JWT_EXPIRES_IN,
-      user: User.toPublicUser(user),
+      user: User.toPublicUser(sessionUser),
     });
   } catch (err) {
     console.error('login error:', err);
@@ -98,4 +107,39 @@ async function login(req, res) {
   }
 }
 
-module.exports = { signup, login };
+async function provisionDemoUser() {
+  const password_hash = await bcrypt.hash(DEMO_PASSWORD, SALT_ROUNDS);
+  let user = await User.findByEmail(DEMO_EMAIL);
+  if (!user) {
+    user = await User.create({
+      name: DEMO_NAME,
+      email: DEMO_EMAIL,
+      password_hash,
+      phone: DEMO_PHONE,
+    });
+  }
+  return User.resetSandbox(user.id, {
+    name: DEMO_NAME,
+    phone: DEMO_PHONE,
+    password_hash,
+  });
+}
+
+// POST /auth/demo — wipes the sandbox account so recruiters always see an empty console
+async function demo(req, res) {
+  try {
+    const user = await provisionDemoUser();
+    const token = signToken(user);
+    return res.json({
+      message: 'Demo session ready',
+      token,
+      expiresIn: JWT_EXPIRES_IN,
+      user: User.toPublicUser(user),
+    });
+  } catch (err) {
+    console.error('demo login error:', err);
+    return res.status(500).json({ error: 'Could not start demo session' });
+  }
+}
+
+module.exports = { signup, login, demo };

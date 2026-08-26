@@ -19,3 +19,16 @@ document.getElementById('login-form').addEventListener('submit', async (event) =
     setButtonLoading(button, false);
   }
 });
+
+document.getElementById('demo-btn').addEventListener('click', async () => {
+  const button = document.getElementById('demo-btn');
+  setButtonLoading(button, true, 'Opening demo…');
+  try {
+    const data = await fetchAPI('/auth/demo', 'POST', {});
+    setSession(data.token, data.user);
+    window.location.href = '/dashboard.html';
+  } catch (err) {
+    showNotification(err.message, 'error');
+    setButtonLoading(button, false);
+  }
+});

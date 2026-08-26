@@ -64,11 +64,30 @@ async function updateCredit(id, { credit_score, approved_limit }) {
   return rows[0] || null;
 }
 
+async function resetSandbox(id, { name, phone, password_hash }) {
+  await query('DELETE FROM loans WHERE user_id = $1', [id]);
+  await query('DELETE FROM kyc_logs WHERE user_id = $1', [id]);
+  const { rows } = await query(
+    `UPDATE users
+     SET name = $2,
+         phone = $3,
+         password_hash = $4,
+         kyc_status = 'pending',
+         credit_score = NULL,
+         approved_limit = NULL
+     WHERE id = $1
+     RETURNING ${USER_COLUMNS}`,
+    [id, name, phone, password_hash]
+  );
+  return rows[0] || null;
+}
+
 module.exports = {
   create,
   findByEmail,
   findById,
   updateKycStatus,
   updateCredit,
+  resetSandbox,
   toPublicUser,
 };
