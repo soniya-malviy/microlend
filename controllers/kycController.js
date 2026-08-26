@@ -21,8 +21,15 @@ async function verify(req, res) {
     });
   }
 
-  const { verified } = verifyIdentity(id_type.trim(), id_number.trim());
+  const check = verifyIdentity(id_type.trim(), id_number.trim());
+  if (!check.ok) {
+    return res.status(400).json({ error: check.error || 'Invalid ID format' });
+  }
+
+  const verified = check.verified;
   const kyc_status = verified ? 'verified' : 'rejected';
+  const storedType = check.id_type || id_type.trim().toLowerCase();
+  const storedNumber = check.id_number || id_number.trim();
 
   const client = await pool.connect();
   try {
@@ -31,8 +38,8 @@ async function verify(req, res) {
     const log = await KycLog.create(
       {
         user_id: req.user.id,
-        id_type: id_type.trim(),
-        id_number: id_number.trim(),
+        id_type: storedType,
+        id_number: storedNumber,
         full_name: full_name.trim(),
         verified,
         kyc_status,

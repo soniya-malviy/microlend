@@ -11,6 +11,7 @@ const webhookRoutes = require('./routes/webhooks');
 const authMiddleware = require('./middleware/authMiddleware');
 const { startJobs } = require('./jobs/loanJobs');
 const { startKeepAlive } = require('./jobs/keepAlive');
+const { migrate } = require('./migrate');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -42,8 +43,19 @@ app.get('/me', authMiddleware, (req, res) => {
   res.json({ user: req.user });
 });
 
-app.listen(PORT, () => {
-  console.log(`MicroLend API listening on port ${PORT}`);
-  startJobs();
-  startKeepAlive();
-});
+async function start() {
+  try {
+    await migrate();
+  } catch (err) {
+    console.error('Database schema failed:', err);
+    process.exit(1);
+  }
+
+  app.listen(PORT, () => {
+    console.log(`MicroLend API listening on port ${PORT}`);
+    startJobs();
+    startKeepAlive();
+  });
+}
+
+start();

@@ -28,7 +28,9 @@
             </div>
             <div>
               <label class="text-sm font-medium text-slate-700" for="id_number">ID number</label>
-              <input id="id_number" name="id_number" required class="mt-1.5 block w-full rounded-xl border-0 px-3 py-2.5 text-sm shadow-sm ring-1 ring-inset ring-slate-200 focus:ring-2 focus:ring-indigo-500" />
+              <input id="id_number" name="id_number" required autocomplete="off"
+                class="mt-1.5 block w-full rounded-xl border-0 px-3 py-2.5 text-sm shadow-sm ring-1 ring-inset ring-slate-200 focus:ring-2 focus:ring-indigo-500" />
+              <p id="id-hint" class="mt-1.5 text-xs text-slate-500">Aadhaar: 12 digits. PAN: 10 characters like ABCPE1234F.</p>
             </div>
             <div>
               <label class="text-sm font-medium text-slate-700" for="full_name">Full name (as on ID)</label>
@@ -42,7 +44,7 @@
             <img src="/images/dashboard-hero.png" alt="Person completing a digital verification on a laptop" class="h-48 w-full object-cover" />
             <div class="p-5">
               <p class="text-sm font-semibold text-slate-900">Why we ask</p>
-              <p class="mt-2 text-sm leading-6 text-slate-600">Verified identity unlocks scoring and INR checkout. In this mock, ID numbers ending in 0 are rejected.</p>
+              <p class="mt-2 text-sm leading-6 text-slate-600">We cannot call UIDAI or NSDL from this demo, so we validate format only: Aadhaar (12 digits, Verhoeff checksum) and PAN (AAAAA9999A, 4th letter P for an individual).</p>
             </div>
           </div>
         </aside>

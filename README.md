@@ -90,7 +90,7 @@ RAZORPAY_KEY_SECRET=xxxxx
 RAZORPAY_WEBHOOK_SECRET=xxxxx
 ```
 
-Run the schema against your database, then:
+Schema is applied automatically on boot (`users.sql`). You can also run it once with `npm run migrate`.
 
 ```bash
 npm run dev
