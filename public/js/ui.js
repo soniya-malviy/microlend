@@ -117,6 +117,7 @@ function icon(name) {
     kyc: '<path d="M12 12a4 4 0 1 0-4-4 4 4 0 0 0 4 4z"/><path d="M4 21a8 8 0 0 1 16 0"/>',
     score: '<path d="M4 19V5m4 14V9m4 10v-6m4 6V7m4 12V11"/>',
     profile: '<circle cx="12" cy="8" r="3.5"/><path d="M5 20a7 7 0 0 1 14 0"/>',
+    help: '<circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.4 2.3c-.8.4-1.4 1-1.4 2v.2"/><circle cx="12" cy="17" r=".7" fill="currentColor" stroke="none"/>',
   };
   return `<svg class="${common}" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">${paths[name] || ''}</svg>`;
 }
@@ -164,15 +165,16 @@ function renderAppShell(active) {
   shell.innerHTML = `
     <div class="min-h-screen">
       <div id="sidebar-overlay" class="fixed inset-0 z-30 bg-slate-900/40 md:hidden"></div>
-      <aside id="sidebar" class="fixed inset-y-0 left-0 z-40 flex w-64 flex-col border-r border-slate-200/70 bg-white/90 shadow-sm backdrop-blur transition-transform duration-200 md:translate-x-0">
-        <div class="flex h-16 items-center px-5">
+      <aside id="sidebar" class="fixed inset-y-0 left-0 z-40 flex w-64 flex-col overflow-y-auto border-r border-slate-200/70 bg-white/90 shadow-sm backdrop-blur transition-transform duration-200 md:translate-x-0">
+        <div class="flex h-16 shrink-0 items-center px-5">
           ${brandLogoHtml({ href: '/dashboard.html' })}
         </div>
         <nav class="flex-1 space-y-1 px-3 py-4">
           ${navItem('/dashboard.html', 'Dashboard', 'dashboard', active, 'home')}
-          ${navItem('/loans.html', 'Loans', 'loans', active, 'loans')}
           ${navItem('/kyc.html', 'KYC', 'kyc', active, 'kyc')}
           ${navItem('/credit-score.html', 'Credit score', 'credit', active, 'score')}
+          ${navItem('/loans.html', 'Loans', 'loans', active, 'loans')}
+          ${navItem('/help.html', 'How to use', 'help', active, 'help')}
           ${navItem('/profile.html', 'Profile', 'profile', active, 'profile')}
         </nav>
         <div class="border-t border-slate-100 p-4">
@@ -199,7 +201,6 @@ function renderAppShell(active) {
               <span class="flex h-7 w-7 items-center justify-center rounded-full bg-indigo-600 text-[11px] font-semibold text-white">${escapeHtml(initials)}</span>
               <span class="max-w-[9rem] truncate text-xs font-medium text-slate-700">${escapeHtml(user?.name || 'Account')}</span>
             </div>
-            <button id="logout-btn-top" type="button" class="rounded-xl px-3 py-1.5 text-sm font-medium text-slate-600 hover:bg-slate-50">Log out</button>
           </div>
         </header>
         <main id="page-content" class="px-4 py-8 md:px-8">${existing}</main>
@@ -218,7 +219,6 @@ function renderAppShell(active) {
     overlay.classList.remove('open');
   });
   document.getElementById('logout-btn').addEventListener('click', logout);
-  document.getElementById('logout-btn-top').addEventListener('click', logout);
 }
 
 function loanRowsHtml(loans) {

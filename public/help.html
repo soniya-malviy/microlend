@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>How to use · MicroLend</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="icon" href="/images/logo.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="/css/app.css" />
+</head>
+<body class="text-slate-800 antialiased">
+  <div id="app">
+    <div id="page-content">
+      <p class="text-xs font-semibold uppercase tracking-[0.16em] text-indigo-600">Help</p>
+      <h1 class="mt-1 text-2xl font-semibold tracking-tight text-slate-900">How to use MicroLend</h1>
+      <p class="mt-1 max-w-2xl text-sm text-slate-500">Swipe through the flow, then open the matching screen. KYC unlocks scoring, scoring unlocks a loan, Razorpay disburses it.</p>
+
+      <div class="help-carousel mt-8" id="help-carousel" aria-roledescription="carousel">
+        <div class="help-track" id="help-track">
+          <article class="help-slide">
+            <img src="/images/help-kyc.png" alt="Identity verification on a laptop with an Aadhaar card" />
+            <div class="help-slide-scrim"></div>
+            <div class="absolute inset-x-0 bottom-0 p-6 md:p-8">
+              <p class="text-[11px] font-semibold uppercase tracking-[0.16em] text-indigo-200">Step 1</p>
+              <h2 class="mt-1 text-2xl font-semibold tracking-tight text-white md:text-3xl">Verify KYC</h2>
+              <p class="mt-2 max-w-lg text-sm leading-6 text-slate-200">Submit Aadhaar or PAN. Format is checked — 12-digit checksum or PAN like ABCPE1234F.</p>
+            </div>
+          </article>
+          <article class="help-slide">
+            <img src="/images/help-score.png" alt="Credit score dashboard with a circular gauge" />
+            <div class="help-slide-scrim"></div>
+            <div class="absolute inset-x-0 bottom-0 p-6 md:p-8">
+              <p class="text-[11px] font-semibold uppercase tracking-[0.16em] text-indigo-200">Step 2</p>
+              <h2 class="mt-1 text-2xl font-semibold tracking-tight text-white md:text-3xl">Generate a credit score</h2>
+              <p class="mt-2 max-w-lg text-sm leading-6 text-slate-200">Enter income, debt, and employment. You get a score and an approved INR limit.</p>
+            </div>
+          </article>
+          <article class="help-slide">
+            <img src="/images/help-loan.png" alt="Request loan screen on a monitor" />
+            <div class="help-slide-scrim"></div>
+            <div class="absolute inset-x-0 bottom-0 p-6 md:p-8">
+              <p class="text-[11px] font-semibold uppercase tracking-[0.16em] text-indigo-200">Step 3</p>
+              <h2 class="mt-1 text-2xl font-semibold tracking-tight text-white md:text-3xl">Request a loan</h2>
+              <p class="mt-2 max-w-lg text-sm leading-6 text-slate-200">On the dashboard, request an amount within your limit. A Razorpay order is created.</p>
+            </div>
+          </article>
+          <article class="help-slide">
+            <img src="/images/help-pay.png" alt="Paying a loan with UPI checkout on a phone" />
+            <div class="help-slide-scrim"></div>
+            <div class="absolute inset-x-0 bottom-0 p-6 md:p-8">
+              <p class="text-[11px] font-semibold uppercase tracking-[0.16em] text-indigo-200">Step 4</p>
+              <h2 class="mt-1 text-2xl font-semibold tracking-tight text-white md:text-3xl">Pay to disburse</h2>
+              <p class="mt-2 max-w-lg text-sm leading-6 text-slate-200">Open the loan and complete test checkout. Capture updates status to disbursed.</p>
+            </div>
+          </article>
+        </div>
+        <button type="button" class="help-nav-btn left-3" id="help-prev" aria-label="Previous step">
+          <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+        </button>
+        <button type="button" class="help-nav-btn right-3" id="help-next" aria-label="Next step">
+          <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+        </button>
+        <div class="help-dots absolute bottom-4 right-6 z-10 flex items-center gap-1.5" id="help-dots"></div>
+      </div>
+
+      <div class="mt-6 grid gap-4 md:grid-cols-4" id="help-thumbs"></div>
+
+      <div class="mt-8 rounded-2xl bg-white p-6 shadow-sm ring-1 ring-slate-100" id="help-detail"></div>
+    </div>
+  </div>
+  <script src="/js/config.js"></script>
+  <script src="/js/api.js"></script>
+  <script src="/js/ui.js"></script>
+  <script src="/js/help.js"></script>
+</body>
+</html>
