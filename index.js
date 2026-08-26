@@ -10,6 +10,7 @@ const loanRoutes = require('./routes/loans');
 const webhookRoutes = require('./routes/webhooks');
 const authMiddleware = require('./middleware/authMiddleware');
 const { startJobs } = require('./jobs/loanJobs');
+const { startKeepAlive } = require('./jobs/keepAlive');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -29,6 +30,11 @@ app.use('/auth', authRoutes);
 app.use('/kyc', kycRoutes);
 app.use('/credit', creditRoutes);
 app.use('/loans', loanRoutes);
+
+app.get('/health', (req, res) => {
+  res.json({ ok: true, service: 'microlend', ts: new Date().toISOString() });
+});
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Example protected route — confirms JWT middleware attaches req.user
@@ -39,4 +45,5 @@ app.get('/me', authMiddleware, (req, res) => {
 app.listen(PORT, () => {
   console.log(`MicroLend API listening on port ${PORT}`);
   startJobs();
+  startKeepAlive();
 });

@@ -113,6 +113,21 @@ ngrok http 3000
 
 ---
 
+## Keep Render from sleeping
+
+Render free web services spin down after ~15 minutes with no traffic. A cron **inside** the Node process cannot wake a service that is already asleep.
+
+This repo pings `GET /health` every 30 minutes in two ways:
+
+1. **GitHub Actions** (this is what actually wakes Render) — add a repository secret:
+   - `KEEP_ALIVE_URL` = `https://your-service.onrender.com`
+   - Optional: `KEEP_ALIVE_URLS` = comma-separated list (API + Netlify site)
+2. **In-app node-cron** — set the same value as `KEEP_ALIVE_URL` (or `KEEP_ALIVE_URLS`) in the Render environment. Render also provides `RENDER_EXTERNAL_URL`, which is used if you do not set the others.
+
+You can also add a [Render Cron Job](https://render.com/docs/cronjobs) or [cron-job.org](https://cron-job.org) hitting `https://your-service.onrender.com/health` every 30 minutes.
+
+---
+
 ## Live Demo
 
 https://microlend-jmi9.onrender.com/
